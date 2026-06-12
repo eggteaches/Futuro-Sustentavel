@@ -1,0 +1,375 @@
+/* Reset global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: radial-gradient(circle at 50% 50%, #0a291b 0%, #030a08 80%);
+    color: #ffffff;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* --- Container da Onda Estilo PS3 --- */
+.ps3-wave-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.ps3-wave-container svg {
+    width: 100%;
+    height: 100%;
+}
+
+.wave {
+    transform-origin: center;
+}
+
+.wave1 {
+    animation: ps3WaveSlow 14s infinite ease-in-out alternate;
+}
+
+.wave2 {
+    animation: ps3WaveMedium 10s infinite ease-in-out alternate;
+}
+
+.wave3 {
+    animation: ps3WaveFast 7s infinite ease-in-out alternate;
+}
+
+.wave4 {
+    animation: ps3WaveMedium 12s infinite ease-in-out alternate-reverse;
+}
+
+@keyframes ps3WaveSlow {
+    0% {
+        transform: translateY(-20px) scaleY(0.9) skewX(-2deg);
+    }
+
+    100% {
+        transform: translateY(30px) scaleY(1.1) skewX(2deg);
+    }
+}
+
+@keyframes ps3WaveMedium {
+    0% {
+        transform: translateY(30px) scaleY(1.15) rotate(0.5deg);
+    }
+
+    100% {
+        transform: translateY(-30px) scaleY(0.85) rotate(-0.5deg);
+    }
+}
+
+@keyframes ps3WaveFast {
+    0% {
+        transform: translateY(-15px) scaleY(0.8) scaleX(0.95);
+    }
+
+    100% {
+        transform: translateY(15px) scaleY(1.2) scaleX(1.05);
+    }
+}
+
+/* --- Sistema de Partículas do Topo --- */
+.particles {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: rgba(163, 255, 214, 0.5);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.8), 0 0 20px rgba(0, 255, 136, 0.4);
+    animation: floatParticle 15s infinite ease-in-out;
+}
+
+.particle:nth-child(1) {
+    top: 45%;
+    left: 15%;
+    animation-duration: 12s;
+    width: 6px;
+    height: 6px;
+}
+
+.particle:nth-child(2) {
+    top: 55%;
+    left: 40%;
+    animation-duration: 18s;
+    animation-delay: 2s;
+}
+
+.particle:nth-child(3) {
+    top: 38%;
+    left: 65%;
+    animation-duration: 14s;
+    animation-delay: 1s;
+    width: 4px;
+    height: 4px;
+}
+
+.particle:nth-child(4) {
+    top: 62%;
+    left: 85%;
+    animation-duration: 16s;
+    animation-delay: 4s;
+}
+
+.particle:nth-child(5) {
+    top: 50%;
+    left: 50%;
+    animation-duration: 20s;
+    width: 7px;
+    height: 7px;
+}
+
+.particle:nth-child(6) {
+    top: 30%;
+    left: 25%;
+    animation-duration: 11s;
+    animation-delay: 3s;
+}
+
+.particle:nth-child(7) {
+    top: 58%;
+    left: 72%;
+    animation-duration: 13s;
+}
+
+@keyframes floatParticle {
+
+    0%,
+    100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.2;
+    }
+
+    50% {
+        transform: translateY(-30px) translateX(15px);
+        opacity: 0.8;
+    }
+}
+
+/* --- Navegação Estilizada --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+}
+
+.btn-contact {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px 24px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease !important;
+}
+
+.btn-contact:hover {
+    background: #00ff88 !important;
+    color: #030a08 !important;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+    border-color: #00ff88;
+}
+
+/* --- Seção de Boas-vindas (Hero) --- */
+.hero-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content {
+    max-width: 680px;
+}
+
+.main-title {
+    font-size: 4.8rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    background: linear-gradient(to right, #ffffff, #b3ffd6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+
+.subtitle {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.btn-see-more {
+    display: inline-block;
+    padding: 14px 42px;
+    background-clip: text;
+    background: linear-gradient(90deg, #00a352, #00ff88);
+    color: #030a08;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 40px;
+    box-shadow: 0 4px 20px rgba(0, 255, 136, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-see-more:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 255, 136, 0.6);
+}
+
+/* --- Seções de Conteúdo --- */
+.content-section {
+    padding: 120px 8%;
+    background: #04130e;
+    position: relative;
+    /* Necessário para conter as partículas das seções */
+    overflow: hidden;
+    z-index: 1;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Assegura que o texto fique acima das partículas */
+.content-section .container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.content-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #00ff88;
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+}
+
+.content-section p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.contact-area {
+    background: #020a07;
+}
+
+.contact-list {
+    list-style: none;
+    margin-top: 25px;
+}
+
+.contact-list li {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.contact-list strong {
+    color: #00ff88;
+}
+
+/* --- Partículas Específicas das Seções de Texto --- */
+.section-particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #00ff88;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #00ff88, 0 0 15px #00ff88;
+    pointer-events: none;
+    z-index: 1;
+    /* Fica atrás do .container que tem z-index: 2 */
+    animation: floatSectionParticle infinite ease-in-out;
+    opacity: 0;
+    /* Aparece pela animação */
+}
+
+@keyframes floatSectionParticle {
+    0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translateY(-50px) scale(1.2);
+        opacity: 0.8;
+    }
+
+    70% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(-100px) scale(0.8);
+        opacity: 0;
+    }
+}
+
+/* --- Efeito de Aparição ao Rolar a Página (Scroll Reveal) --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s ease-in-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
