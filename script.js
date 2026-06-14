@@ -1,4 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // --- Lógica do Botão Voltar ao Topo ---
+    const backToTopBtn = document.getElementById("backToTopBtn");
+
+    window.addEventListener("scroll", () => {
+        // Calcula o total da página que pode ser rolada
+        const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+        // Mostra o botão se a rolagem passar de 50% (metade da página)
+        if (window.scrollY > scrollableHeight / 2) {
+            backToTopBtn.classList.add("show");
+        } else {
+            backToTopBtn.classList.remove("show");
+        }
+    });
+
+    // Ação de clique para voltar suavemente ao topo
+    backToTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
 
     // --- 1. Lógica do Scroll Reveal ---
     const reveals = document.querySelectorAll(".reveal");
